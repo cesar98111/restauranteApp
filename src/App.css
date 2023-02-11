@@ -1,38 +1,118 @@
-.App {
-  text-align: center;
+
+
+.containerNavbar {
+  display: flex;
+  height: 7%;
+  width: 100%;
+  background-color: black;
+  justify-content: space-between;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.containerHome{
+  display: flex;
+  flex-direction: row;
+  height: 79%;
+  justify-content: space-around;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.containerApp {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  width: 100%;
+  background-color: rgb(211, 211, 211);
+}
+.App{
+  height: 100%;
+  width: 100%;
+}
+.titleNavbar{
+  display: flex;
+  flex-direction: row;
+  font-size: 40px;
+  font-weight: bold;
+  align-items:flex-start;
+  height: 100%;
+  width: 20%;
+  margin-left: 15px;
+  
+  color:rgb(231, 211, 155)
+}
+.linkContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
   align-items: center;
+  width: 40%;
+}
+.link{
+  text-decoration: none;
+  color:rgb(128, 128, 128);
+  font-size: 15px;
+  font-weight: bold;
+  
+}
+.link:hover{
+  text-decoration: none;
+  color:rgb(255, 255, 255);
+  font-size: 15px;
+  font-weight: bold;
+  
+}
+.containerFoother{
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
+  align-items: center;
+  background-color: black;
+  height: 14%;
+  width: 100%;
+  color:white;
+}
+.reservasTable{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60%;
+  width: 40%;
+  
+}
+
+.productTable{
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60%;
+  width: 40%;
+}
+
+table tr:nth-child(even){
+  background-color: rgb(214, 211, 211);
+}
+table tr:nth-child(odd){
+  background-color: rgb(255, 255, 255);
+}
+
+tr:hover td{
+  background-color: rgb(44, 43, 43);
+  color:white;
+}
+
+table{
+  border-collapse: collapse;
+  
+}
+td,th{
+  border: 1px solid rgb(189, 189, 189)
+  
+}
+
+th{
+  background-color: rgb(49, 49, 49);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.tableTitle{
+  text-align: center;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
