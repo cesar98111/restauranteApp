@@ -1,59 +1,73 @@
 
-import { useState } from "react"
-
+import { useEffect, useState } from "react"
+import { getBooking,getSelter} from "../../services/services"
 
 
 const Home = () =>{
 
-   
-    const [client , setClient] = useState([{
-        id:1,
-        nombre:"paco",
-        apellido:"pepe",
-        userName:"paco123"
 
-    },
-    {
-        id:2,
-        nombre:"paco",
-        apellido:"pepe",
-        userName:"paco123"
-    },
-    {
-        id:3,
-        nombre:"paco",
-        apellido:"pepe",
-        userName:"paco123"  
-    }])
+    const [booking, setBooking] = useState()
+    const [mostSelter, setMostSelter] = useState()
+
+    useEffect(()=>{
+        const requestBooking = async() =>{
+            setBooking(await getBooking())
+            setMostSelter(await getSelter(2))
+        }
+
+        requestBooking()
+    },[])
+
+
+   
     
     const renderBody = () =>{
 
         return(
-            client.map(value =>{    
+            booking&&
+            booking.map(value =>{    
                 return(
                     <tr >
-                            <td>{value.id}</td>
-                            <td >{value.nombre}</td>
-                            <td>{value.apellido}</td>
-                            <td>{value.userName}</td>
+                            <td>{value.clienteNombre}</td>
+                            <td>{value.telefono}</td>
+                            <td>{value.fecha}</td>
+                            <td>{value.mesa}</td>
+                            <td>{value.Npersonas}</td>
+                            <td>{value.empleadoNombre}</td>
                     </tr>
                 )
             }        
         ))
         
     }
+
+    const renderBodySelter = () =>{
+        return(
+            mostSelter&&
+            mostSelter.map(value =>{
+                return(
+                    <tr>
+                        <td>{value.platillos}</td>
+                        <td>{value.cuenta}</td>
+                    </tr>
+                )
+            })
+        )
+    }
     return(
     <div className="containerHome">
         
         <div className='reservasTable'>
-            <h1 className="tableTitle">productos mas vendidos</h1>
+            <h1 className="tableTitle">Pedidos mas vendidos</h1>
             <table>
                 <thead>
                     <tr >
-                        <th>#</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Username</th>
+                        <th>Nombre de cliente</th>
+                        <th>telefono</th>
+                        <th>fecha</th>
+                        <th>mesa</th>
+                        <th>numero de personas</th>
+                        <th>Nombre de empleado</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,34 +76,16 @@ const Home = () =>{
             </table>
         </div>
         <div className="productTable">
-            <h1 className="tableTitle">Reservas recientes</h1>
+            <h1 className="tableTitle">Platos mas vendidos</h1>
             <table>
                 <thead>
                     <tr >
-                    <th>#</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Username</th>
+                        <th>Plato</th>
+                        <th>numero de ventas</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr >
-                    <td>1</td>
-                    <td>Mark</td>
-                    <td>Otto</td>
-                    <td>@mdo</td>
-                    </tr>
-                    <tr >
-                    <td>2</td>
-                    <td>Jacob</td>
-                    <td>Thornton</td>
-                    <td>@fat</td>
-                    </tr>
-                    <tr >
-                    <td>3</td>
-                    <td colSpan={2}>Larry the Bird</td>
-                    <td>@twitter</td>
-                    </tr>
+                   {renderBodySelter()}
                 </tbody>
             </table>
         </div>

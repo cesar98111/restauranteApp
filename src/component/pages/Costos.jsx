@@ -1,7 +1,9 @@
 
 
 
-const Costos = () =>{
+const Costos = ({}) =>{
+
+    
     return(
         <div>
             Costos

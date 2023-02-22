@@ -4,7 +4,7 @@ import Navbar from "../Navbar/Navbar";
 import Costos from "../pages/Costos";
 import Carta from "../pages/Carta";
 import Foother from "../Foother/Foother";
-
+import AddFood from "../pages/AddFood";
 const FedoraApp = () =>{
     return(
         <div className="containerApp">
@@ -13,6 +13,7 @@ const FedoraApp = () =>{
                 <Route path="/" element={<Home/>}></Route>
                 <Route path="/costos" element={<Costos/>}></Route>
                 <Route path="/carta" element={<Carta/>}></Route>
+                <Route path="/carta/add" element={<AddFood/>}></Route>
             </Routes>
             <Foother/>
         </div>
