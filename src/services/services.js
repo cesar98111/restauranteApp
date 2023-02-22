@@ -1,6 +1,6 @@
 
 
-const url = "http://192.168.0.106:8000/api/restaurant"
+const url = "http://192.168.0.103:8000/api/restaurant"
 
 const getBooking = async() =>{
     try{
@@ -120,6 +120,38 @@ const deleteFood = async(id) =>{
         console.log(err)
     }
 }
+
+const addEmployee = async(empleado)=>{
+    try{    
+        await fetch(`${url}/insert/employe`,{
+            method:"POST",
+            body:JSON.stringify({
+                name:empleado.nombre,
+                lastName:empleado.apellido,
+                salary:empleado.salario,
+                ocupation:empleado.ocupacion,
+                telephone:empleado.telefono
+            }),
+            headers:{
+                "Content-type":"application/json"
+            }
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
+const deleteEmployee = async (id)=>{
+    try{
+        await fetch(`${url}/delete/employe/${id}`,{
+            method:"DELETE",
+            headers:{
+                "Content-type":"application/json"
+            }
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
 export{
     getBooking,
     getSelter,
@@ -128,7 +160,9 @@ export{
     insertFood,
     insertCompuesto,
     deleteCompuesto,
-    deleteFood
+    deleteFood,
+    addEmployee,
+    deleteEmployee
 }
 
 

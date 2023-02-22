@@ -2,7 +2,7 @@
 
 .containerNavbar {
   display: flex;
-  height: 7%;
+  height: 70px;
   width: 100%;
   background-color: black;
   justify-content: space-between;
@@ -140,6 +140,7 @@ th{
 }
 .containerPages{
   width: 80%;
+  height: 100%;
 }
 .tableFood{
   width: 100%;
@@ -165,12 +166,13 @@ th{
 .ContainerAddFood{
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  height: 80%;
   
 }
 
 .ContainerProducts{
-  height: 500px;
+  height: 100%;
   overflow-y: auto;
   background-color: white;
 }
@@ -180,16 +182,89 @@ th{
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  height: 30%;
-  width: 30%;
+  height: 100%;
+  width: 20%;
   background-color: white;
   padding: 20px;
 }
 .inputFood{
   margin-bottom: 10px;
   width: 80%;
+ 
 }
 .containerSelected{
-  height: 500px;
+  height: 100%;
+  width: 50%;
   overflow-y: auto ;
+}
+.tableSelected{
+  width: 100%;
+  text-align: center;
+}
+.noneProduct{
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.containerEmploye{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+}
+.TableEmploye{
+  width: 100%;
+  height: 100%;
+  overflow-y:auto ;
+  text-align: center;
+}
+.inputFilter{
+  margin-right:20px ;
+  margin-bottom: 20px;
+  padding: 10px;
+  width: 300px;
+  border:none;
+  border-radius: 10px;
+  text-align: center;
+}
+.containerFilterEmploye{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  width: 50%;
+  margin-left: 20px;
+}
+.actionEmploye{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  width: 100%;
+}
+.addButtonFilter{
+  height: 40px;
+  width: 300px;
+  color:white;
+  background-color: rgb(69, 100, 241);
+  border:none;
+  border-radius: 10px;
+  font-weight: bold;
+  
+}
+.formEmploye{
+  height: 80%;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+}
+.containerFormEmploye{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  
 }

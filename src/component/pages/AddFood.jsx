@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react"
 
 import { getTable, insertFood, insertCompuesto } from "../../services/services"
+import { useNavigate } from "react-router-dom"
 
 const AddFood = () =>{
-
+    const navigate = useNavigate()
     const [Food, setFood] = useState({
         nombre:"",
         precio:0
@@ -44,7 +45,7 @@ const AddFood = () =>{
             nombre:"",
             precio:0
         })
-            
+        navigate("/carta")   
         
     }
 
@@ -65,7 +66,7 @@ const AddFood = () =>{
                         <td>{value.coste}</td>
                         <td>{value.idProveedores}</td>
                         <td> 
-                            <button onClick={()=> handlerSelect(value)}>selecionar</button>
+                            <button class="UpdateButton"  onClick={()=> handlerSelect(value)}>selecionar</button>
                         </td>
                     </tr>
                 )
@@ -108,14 +109,18 @@ const AddFood = () =>{
                     name="precio"
                     class="inputFood"
                     placeholder="precio"/>
-                <button type="submit"> enviar </button>
+                <button class="UpdateButton" type="submit"> enviar </button>
             </form>
             {
                 select.length === 0 ?
-                null
+                (
+                    <div class="noneProduct">
+                        <h1>NO HAY PRODUCTOS SELECIONADOS</h1>
+                    </div>
+                )
                 :(
                     <div class="containerSelected">
-                        <table>
+                        <table class="tableSelected">
                             <thead>
                                 <tr>
                                     <th>nombre</th>
