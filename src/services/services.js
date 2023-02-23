@@ -1,6 +1,6 @@
 
 
-const url = "http://192.168.0.103:8000/api/restaurant"
+const url = "http://192.168.0.100:8000/api/restaurant"
 
 const getBooking = async() =>{
     try{
@@ -193,6 +193,36 @@ const updateEmploye = async(employe, id)=>{
         console.log(err)
     }
 }
+const getProveedor = async()=>{
+    try{
+        const response = await fetch(`${url}/relation/provedor`)
+        const data = await response.json()
+        return data.data
+    }catch(err){
+        console.log(err)
+    }
+}
+const inserProducto = async(product)=>{
+    try{
+        const response = await fetch(`${url}/insert/product`,{
+            method:"POST",
+            body:JSON.stringify({
+                nombre:product.nombre,
+                alergeno:product.alergeno,
+                coste:product.costo,
+                proveedor:product.idProveedores
+            }),
+            headers:{
+                "Content-type":"application/json"
+            }
+        })
+        const data = await response.json()
+        console.log(data)
+        return(data)
+    }catch(err){
+        console.log(err)
+    }
+}
 export{
     getBooking,
     getSelter,
@@ -206,7 +236,9 @@ export{
     deleteEmployee,
     requestEmployeById,
     requestEmployeByName,
-    updateEmploye
+    updateEmploye,
+    getProveedor,
+    inserProducto
 }
 
 

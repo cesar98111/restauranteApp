@@ -48,7 +48,7 @@ const Employes = () =>{
                     <tr>
                         <td>{value.nombre}</td>
                         <td>{value.apellido}</td>
-                        <td>{value.salario}</td>
+                        <td>{value.salario}€</td>
                         <td>{value.ocupacion}</td>
                         <td>{value.telefono}</td>
                         <td>
@@ -62,6 +62,7 @@ const Employes = () =>{
     }
     return(
         <div class="containerEmploye">
+            <h1>LISTA DE EMPLEADOS</h1>
             <div class="actionEmploye">
                 <div class="containerFilterEmploye">
                     

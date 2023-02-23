@@ -12,7 +12,7 @@ const Home = () =>{
     useEffect(()=>{
         const requestBooking = async() =>{
             setBooking(await getBooking())
-            setMostSelter(await getSelter(2))
+            setMostSelter(await getSelter(3))
         }
 
         requestBooking()
@@ -30,7 +30,7 @@ const Home = () =>{
                     <tr >
                             <td>{value.clienteNombre}</td>
                             <td>{value.telefono}</td>
-                            <td>{value.fecha}</td>
+                            <td>{value.fecha.slice(0,10)}</td>
                             <td>{value.mesa}</td>
                             <td>{value.Npersonas}</td>
                             <td>{value.empleadoNombre}</td>

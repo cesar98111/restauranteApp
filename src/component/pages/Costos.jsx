@@ -34,7 +34,7 @@ const Costos = ({}) =>{
                 return(
                     <tr>
                         <td>{value.nombre}</td>
-                        <td>{value.coste}</td>
+                        <td>{value.coste}€</td>
                     </tr>
                 )
             })
@@ -48,7 +48,7 @@ const Costos = ({}) =>{
                 return(
                     <tr>
                         <td>{value.nombre}</td>
-                        <td>{value.salario}</td>
+                        <td>{value.salario}€</td>
                     </tr>
                 )
             })
@@ -77,20 +77,8 @@ const Costos = ({}) =>{
                 </div>
                 
             </div>
-            {
-                costo === 0?
-                (<div>
-                    <h1>calcular presupuesto mensual</h1>
-                    <button onClick={()=>calculate()}>calcular</button>
-                </div>)
-                :
-                (
-                    <div>
-                        <h1>resultado</h1>
-                        <h1>{costo}</h1>
-                    </div>
-                )
-            }
+            
+            
             <div class="employe">
                 <h1>Salarios de empleados</h1>
                 <div class="containerEmployesCost">
@@ -111,6 +99,23 @@ const Costos = ({}) =>{
                     </table>
                 </div>
                 
+            </div>
+
+            <div class="containerCosto">
+                {
+                    costo === 0?
+                    (<div className="containerResult">
+                        <h1>calcular presupuesto mensual</h1>
+                        <button class ="addButtonFood" onClick={()=>calculate()}>calcular</button>
+                    </div>)
+                    :
+                    (
+                        <div class="containerResult">
+                            <h1>TOTAL A PAGAR</h1>
+                            <h1>{costo}€</h1>
+                        </div>
+                    )
+                }
             </div>
             
         </div>

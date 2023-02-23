@@ -377,3 +377,35 @@ label{
   margin-right: 10px;
   text-align: center;
 }
+.productRequest{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  justify-content: flex-start;
+  align-items: center;
+}
+.tableProductProv{
+  width: 80%;
+}
+.containerResult{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
+  height: 200 ;
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+}
+.containerCosto{
+  width: 80%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+h1{
+  text-align: center;
+}

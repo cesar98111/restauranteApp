@@ -40,7 +40,7 @@ const Carta = () =>{
                         </td>
                         <td>
                             <button onClick={()=> handlerDeleteFood(value.idPlato)} class="DeleteButton">Eliminar</button> 
-                            <button class="UpdateButton">Modificar</button>
+                            
                         </td>
                     </tr>
                 )
@@ -51,6 +51,7 @@ const Carta = () =>{
 
     return(
         <div class="cartaTable">
+            <h1>MENU DE LA CARTA</h1>
             <button class="addButtonFood" onClick={()=>navigate("/carta/add")}>Añadir</button>
             <table class="tableFood">
                 <thead>
