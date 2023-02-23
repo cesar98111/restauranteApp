@@ -51,10 +51,12 @@ const AddFood = () =>{
 
     const handlerSelect = (value) =>{
         setSelect([...select,value])
+        setProduct(product.filter(data=> value.nombre !== data.nombre))
         
     }
     const handleDelete = (value)=>{
         setSelect(select.filter(data => value.nombre !== data.nombre))
+        setProduct([...product,value])
     }
     const rederBody = () =>{
         return(

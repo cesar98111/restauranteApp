@@ -58,7 +58,7 @@ const Home = () =>{
     <div className="containerHome">
         
         <div className='reservasTable'>
-            <h1 className="tableTitle">Pedidos mas vendidos</h1>
+            <h1 className="tableTitle">RESERVAS RECIENTES</h1>
             <table>
                 <thead>
                     <tr >
@@ -76,7 +76,7 @@ const Home = () =>{
             </table>
         </div>
         <div className="productTable">
-            <h1 className="tableTitle">Platos mas vendidos</h1>
+            <h1 className="tableTitle">PLATOS MAS VENDIDOS</h1>
             <table>
                 <thead>
                     <tr >

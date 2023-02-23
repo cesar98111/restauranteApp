@@ -152,6 +152,47 @@ const deleteEmployee = async (id)=>{
         console.log(err)
     }
 }
+
+const requestEmployeById =async (id) =>{
+    try{
+        const response = await fetch(`${url}/employe/${id}`)
+        const data = await response.json()
+
+        return data.data
+    }catch(err){
+    console.log(err)
+    }
+}
+const requestEmployeByName = async(name)=>{
+    try{
+        const response = await fetch(`${url}/employe/name/${name}`)
+        const data = await response.json()
+
+        return data.data
+    }catch(err){
+    console.log(err)
+    }
+}
+
+const updateEmploye = async(employe, id)=>{
+    try{
+        await fetch(`${url}/update/employe/${id}`,{
+            method:"PUT",
+            body:JSON.stringify({
+                nombre:employe.nombre,
+                apellido:employe.apellido,
+                salario:employe.salario,
+                ocupation:employe.ocupacion,
+                telefono:employe.telefono
+            }),
+            headers:{
+                "Content-type":"application/json"
+            }
+        })
+    }catch(err){
+        console.log(err)
+    }
+}
 export{
     getBooking,
     getSelter,
@@ -162,7 +203,10 @@ export{
     deleteCompuesto,
     deleteFood,
     addEmployee,
-    deleteEmployee
+    deleteEmployee,
+    requestEmployeById,
+    requestEmployeByName,
+    updateEmploye
 }
 
 

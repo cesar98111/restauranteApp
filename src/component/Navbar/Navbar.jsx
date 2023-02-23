@@ -19,6 +19,7 @@ const Navbar = () =>{
                 <Link className="link" to="/carta">CARTA</Link>
                 <Link className="link" to="/costos">COSTES</Link>
                 <Link className="link" to="/employe">EMPLEADOS</Link>
+                <Link className="link" to="/product">PRODUCTOS</Link>
             </div>
         </div>
     )

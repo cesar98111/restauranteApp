@@ -1,12 +1,16 @@
 import { useEffect, useState } from "react"
-import { getTable, deleteEmployee } from "../../services/services"
-import { useNavigate } from "react-router-dom"
-
+import { getTable, deleteEmployee ,requestEmployeByName } from "../../services/services"
+import { useNavigate, Link } from "react-router-dom"
+import Pagination from "../Paginations.jsx/Pagination"
 
 const Employes = () =>{
     const navigate = useNavigate()
     const [employeList, setEmployeList] = useState()
     const [filter , setFilter] = useState()
+    const [recordsPerPages, setRecordsPerPages]= useState(5)
+    const [currentPages, setCurrentPages]= useState(1)
+    const lastIndex = currentPages * recordsPerPages
+    const firstIndex = lastIndex - recordsPerPages
     useEffect(()=>{
         const requestEmployee= async() =>{
             setEmployeList(await getTable("empleados"))
@@ -16,6 +20,19 @@ const Employes = () =>{
 
     const handlerChange = (e) =>{
         setFilter(e.target.value)
+    }
+
+    const handleSubmitFilter = async (e)=>{
+        e.preventDefault()
+        const data = await requestEmployeByName(filter)
+        
+        if(data.length !== 0){
+            setEmployeList(data)
+        }else{
+            console.log("hola")
+            setEmployeList(await getTable("empleados"))
+        }
+        
     }
 
     const handlerDelete = async(id)=>{
@@ -35,19 +52,22 @@ const Employes = () =>{
                         <td>{value.ocupacion}</td>
                         <td>{value.telefono}</td>
                         <td>
-                            <button class = "UpdateButton">modificar</button>
-                            <button onClick={()=> handlerDelete(value.idEmpleado)} class="DeleteButton">Eliminar</button>
+                            <Link class = "UpdateButtonEmploye" to={`/employe/add/${value.idEmpleado}`}>modificar</Link>
+                            <button onClick={()=> handlerDelete(value.idEmpleado)} class="DeleteButtonEmploye">Eliminar</button>
                         </td>
                     </tr>
                 )
-            })
+            }).slice(firstIndex,lastIndex)
         )
     }
     return(
         <div class="containerEmploye">
             <div class="actionEmploye">
                 <div class="containerFilterEmploye">
-                    <form>
+                    
+                    <label className="labelFiltro" htmlFor="filtro">Filtro por nombre</label>
+                    
+                    <form onSubmit={handleSubmitFilter}>
                         <input type="text"
                             placeholder="introduzca"
                             name="filtro"
@@ -55,7 +75,8 @@ const Employes = () =>{
                             onChange={handlerChange}
                             value={filter}
                             />
-                        <button class="UpdateButton">buscar</button>
+                        
+                        <button type="submit" name="filtro" class="UpdateButton">buscar</button>
                     </form>
                 </div>
                 <button onClick={()=> navigate("/employe/add")} class="addButtonFilter">añadir nuevo empleado</button>
@@ -76,6 +97,15 @@ const Employes = () =>{
                     {tableEmploye()}
                 </tbody>
             </table>
+            {
+                employeList&&
+                <Pagination
+                    records={employeList.length}
+                    recordsPerPages={recordsPerPages}
+                    currentPages={currentPages}
+                    setCurrentPages={setCurrentPages}/>
+            }
+            
         </div>
     )
 }

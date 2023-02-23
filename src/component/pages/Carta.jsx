@@ -2,11 +2,14 @@ import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
 import { getTable , getAlergen, deleteCompuesto, deleteFood} from "../../services/services"
 import Alergenos from "../Alergenos/Alergenos"
-
+import Pagination from "../Paginations.jsx/Pagination"
 const Carta = () =>{
 
     const navigate = useNavigate()
-
+    const [recordsPerPages, setRecordsPerPages]= useState(5)
+    const [currentPages, setCurrentPages]= useState(1)
+    const lastIndex = currentPages * recordsPerPages
+    const firstIndex = lastIndex - recordsPerPages
     const[platos, setPlatos] = useState()
     useEffect(()=>{
         const getPlato = async() =>{
@@ -36,33 +39,41 @@ const Carta = () =>{
                             <Alergenos name={value.nombre}/>
                         </td>
                         <td>
-                            <button onClick={()=> handlerDeleteFood(value.idPlato)} class="DeleteButton">eliminar</button> 
-                            <button class="UpdateButton">modificar</button>
+                            <button onClick={()=> handlerDeleteFood(value.idPlato)} class="DeleteButton">Eliminar</button> 
+                            <button class="UpdateButton">Modificar</button>
                         </td>
                     </tr>
                 )
                 
-            })
+            }).slice(firstIndex,lastIndex)
         )
     }
 
     return(
         <div class="cartaTable">
-            <button onClick={()=>navigate("/carta/add")}>añadir</button>
+            <button class="addButtonFood" onClick={()=>navigate("/carta/add")}>Añadir</button>
             <table class="tableFood">
                 <thead>
                     <tr>
-                        <th>numero de plato</th>
-                        <th>nombre</th>
-                        <th>precio</th>
-                        <th>alergenos</th>
-                        <th>acciones</th>
+                        <th>Numero de plato</th>
+                        <th>Nombre</th>
+                        <th>Precio</th>
+                        <th>Alergenos</th>
+                        <th>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
                     {renderTbody()}
                 </tbody>
             </table>
+            {
+                platos&&
+                <Pagination
+                    records={platos.length}
+                    recordsPerPages={recordsPerPages}
+                    currentPages={currentPages}
+                    setCurrentPages={setCurrentPages}/>
+            }
         </div>
     )
 }
